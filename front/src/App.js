@@ -1,21 +1,27 @@
 import Container from '@material-ui/core/Container';
-import AppBar from '@material-ui/core/Container';
-import Link from '@material-ui/core/Container';
+import { AppBar } from '@material-ui/core';
+import { Link } from '@material-ui/core';
 
-import { ClassifierForm, ArticleList } from './components'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import Classifier from './pages/classifire'
+import Articles from './pages/articles'
+import TabPanel from './components/tabs'
+
 function App() {
   return (
     <div className="App">
-      <AppBar position="static" color="'primary'">
-        <Link href="#">
-          Link
-        </Link>
-      </AppBar>
+		<TabPanel />
+        {/* <Link href="/classifier">Классификатор</Link>
+		<Link href="/articles">Статьи</Link>
 
-      <Container>
-        <ClassifierForm />
-        <ArticleList />
-      </Container>
+	<Router>
+		<Switch>
+			<Route exact path="/classifier" component={Classifier} />
+			<Route exact path="/articles" component={Articles} />
+		</Switch>
+	</Router> */}
+
     </div>
   );
 }
