@@ -1,5 +1,14 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export const SearchArticle = () => {
-    
+class SearchArticle extends Component {
+    render() {
+        return (
+            
+            <form>
+                
+            </form>
+        )
+    }
 }
+
+export default SearchArticle
