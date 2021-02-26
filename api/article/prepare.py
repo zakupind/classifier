@@ -18,14 +18,20 @@ def getNewsFields(fileName):
     return fields
 
 def updateOrSaveNew(fields):
-    tag = Tag()
-    tag.name = fields["tag"]
-    tag.save()
+    try:
+        tag = Tag.objects.get(name=fields["tag"])
+    except:
+        tag = Tag()
+        tag.name = fields["tag"]
+        tag.save()
 
-    source = Source()
-    source.sourceName = fields["sourceName"]
-    source.sourceUrl = fields["sourceUrl"]
-    source.save()
+    try:
+        source = Source.objects.get(sourceName=fields["sourceName"])
+    except:
+        source = Source()
+        source.sourceName = fields["sourceName"]
+        source.sourceUrl = fields["sourceUrl"]
+        source.save()
 
     articleNew = Articles()
     articleNew.title = fields["title"]
@@ -39,11 +45,12 @@ def updateOrSaveNew(fields):
     articleNew.save()
 
 def goDb():
-    newsFilesName = os.listdir(str(settings.BASE_DIR) + "\\articleList\\истории")
+    array = ["истории", "новости", "разбор", "шапито"]
 
-    for fileName in newsFilesName:
-        fileName = getNewsFields(str(settings.BASE_DIR) + "\\articleList\\истории\\" + fileName)
-        updateOrSaveNew(fileName)
-        print(fileName)
+    for item in array:
+        newsFilesName = os.listdir(str(settings.BASE_DIR) + "\\articleList\\" + item)
+        print(item)
 
-    return 'go'
+        for fileName in newsFilesName:
+            fileName = getNewsFields(str(settings.BASE_DIR) + "\\articleList\\" + item + "\\" + fileName)
+            updateOrSaveNew(fileName)

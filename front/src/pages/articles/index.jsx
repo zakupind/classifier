@@ -1,16 +1,15 @@
-import { Container } from '@material-ui/core'
-import React, { Component } from 'react'
+import React from 'react'
 
 import ArticleList from './article-list'
 import SearchArticle from './search-article'
+import ModalForm from '../../components/modal-fortm'
 
-export default class Articles extends Component {
-    render () {
-        return (
-            <Container>
-                <SearchArticle />
-                <ArticleList />
-            </Container>
-        )
-    }
+export default function Articles () {
+    return (
+        <React.Fragment>
+            <SearchArticle />
+            <ArticleList />
+            <ModalForm />
+        </React.Fragment>
+    )
 }

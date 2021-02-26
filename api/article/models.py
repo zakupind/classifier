@@ -9,7 +9,7 @@ class Tag(models.Model):
 
 class Source(models.Model):
     sourceName = models.CharField(max_length=50)
-    sorceUrl = models.CharField(max_length=100, null=True)
+    sourceUrl = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return self.sourceName
@@ -19,7 +19,7 @@ class Articles(models.Model):
     secondTitle = models.CharField(max_length=1000, null=True)
     description = models.CharField(max_length=1000, null=True)
     date = models.CharField(max_length=20)
-    content = models.TextField()
+    content = models.TextField(null=True)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     source = models.ForeignKey(Source, on_delete=models.CASCADE)
 
